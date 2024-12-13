@@ -109,7 +109,7 @@ SELECT SYSDATE-1 AS 어제, SYSDATE AS 오늘, SYSDATE +1 AS 내일, SYSDATE+2 A
 
 /*
 -- 현재시간              한 시간 후,                        1분 후,                                     10초 후 조회
-    SYSDATE          SYSDATE + 1/24          SYSDATE + 1/24/60                   SYSDATE + 1/24/60/60 *10
+    SYSDATE             SYSDATE + 1/24                  SYSDATE + 1/24/60                           SYSDATE + 1/24/60/60 *10
                          24시간 중 1시간 후       24시간에서 60분 중 1분 후       24시간 중 60분 60초 중에 (1 * 10)초후
 */
 
