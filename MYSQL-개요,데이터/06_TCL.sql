@@ -56,3 +56,20 @@ Durability(지속성) : 트랜잭션이 완료된 후의 결과는 영구적으�
 		예) 시스템이 갑자기 다운되어도 성공적으로 완료된 거래 결과는 유지되어야 함
 		     은행에서 5만원을 송금 후 서비스 점검으로 1시간 후 계좌 확인을 했을 때 송금 내역이 존재해야함
 */
+
+-- USER PHONE 앞에 작성된 KOR) 제거
+SET SQL_SAFE_UPDATES = 0;                                           -- 안전모드 종료
+
+START TRANSACTION;		                                            -- SAVEPOINT 를 사용하기 위해서는 START TRANSACTION 시작 수동 제어
+SAVEPOINT SP1;			                                            -- 임시로 되돌릴 위치 이름 SP1설정
+USE KHTUSER;			                                            -- KHTUSER DB 접속
+UPDATE USER SET PHONE = SUBSTRING_INDEX(PHONE,')',1);               -- 수정할 UPDATE문 작성
+
+SELECT * FROM USER;	                                                -- 제대로 작성했는지 확인
+
+
+ROLLBACK TO SP1;                                                    -- 원하는대로 결과 수정 X SP1 임시저장한 위치로 되돌리기
+UPDATE USER SET PHONE = SUBSTRING_INDEX(PHONE,')',-1);              -- 수정
+SELECT * FROM USER;                                                 -- 올바르게 수정됬는지 확인
+
+COMMIT;                                                             -- 수정 결과 저장
