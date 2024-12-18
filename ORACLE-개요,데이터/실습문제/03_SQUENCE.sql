@@ -72,9 +72,10 @@ BEFORE INSERT ON student
 FOR EACH ROW 
 BEGIN 
 	-- 시퀀스를 사용해서 student 테이블 내에 studentid 번호를 자동으로 생성
-	:NEW.studentid = seq_user.NEXTVAL;
+	:NEW.studentid := seq_user.NEXTVAL;
 END;
 
+SELECT * FROM STUDENT;
 
 
 
