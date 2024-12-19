@@ -61,8 +61,10 @@ NOT NULL
     CREATE TABLE 테이블명(
     테이블_ID INT      AUTO_INCREMENT PRIMARY KEY,
     유저명 VARCHAR(50) NOT NULL
-    가입일자 DATE      NOT NULL DEFAULT CURRENT_DATE
+    가입일자 DATETIME  NOT NULL DEFAULT CURRENT_DATE
     )
+    -- DATE 자료형은 current_timestamp 사용 불가
+    -- DATE 자료형은 연-월-일 만 저장이되고, DATETIME 연-월-일 시:분:초 저장이 되므로 DATETIME
 
     유저명과 가입일자 모두 NULL(빈) 값 작성 XXX 
     ->
@@ -147,7 +149,7 @@ FOREIGN KEY
                     배달 앱의 경우 가게가 폐업을 할 경우 가게에서 제공한 메뉴들과 리뷰 모두 삭제
 
 
-                    
+
 
 CREATE TABLE 이츠(
     이츠회원번호
